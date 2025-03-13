@@ -1,0 +1,8 @@
+﻿  window.cpp
+  main.cpp
+  Generating code
+  13 of 14 functions (92.9%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Engine.vcxproj -> C:\Users\relam\source\repos\Engine\x64\Release\Engine.exe
