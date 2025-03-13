@@ -21,10 +21,20 @@
     <ClCompile Include="backend\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="backend\shader_config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="backend\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="backend\shader_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\vertex_shader.glsl" />
+    <None Include="shaders\fragment_shader.glsl" />
   </ItemGroup>
 </Project>
