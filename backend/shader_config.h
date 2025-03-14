@@ -5,7 +5,16 @@
 
 #include<iostream>
 #include<GLFW/glfw3.h>
-#include<>
+#include<sstream>
+#include<string>
+
+using std::string;
+
+class shaders {
+	string readShaderFile(const string& filpath);
+	GLuint compileShader(GLenum shaderType, const string& shaderCode);
+
+};
 
 
 

@@ -12,12 +12,6 @@ void Window::init() {
 		cerr << "Window not initialises" << endl;
 		glfwTerminate();
 	}
-
-	glfwMakeContextCurrent(window);
-	if (!glewInit() != GLEW_OK) {
-		std::cerr << "GLEW initialising error!" << std::endl;
-		
-	}
 }
 
 void Window::update() {
@@ -33,5 +27,6 @@ void Window::update() {
 
 	glfwDestroyWindow(window);
 	glfwTerminate();
+
 
 }
