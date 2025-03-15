@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef SHADER_H
-#define SHDER_H
-
 #include<iostream>
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
@@ -17,8 +14,3 @@ class shaders {
 
 };
 
-
-
-
-
-#endif // !SHADER_H
