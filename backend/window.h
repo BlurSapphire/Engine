@@ -5,9 +5,7 @@
 #include<iostream>
 #include<sstream>
 
-using std::cerr;
-using std::endl;
-
+using std::cerr, std::endl;
 class Window {
 public:
 	void init();
