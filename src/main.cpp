@@ -1,11 +1,10 @@
-#include"../backend/window.h"
-
+#include <iostream>
+#include "../backend/window.h"
 
 int main() {
-	Window win;
-	win.init();
-	win.update();
-	win.cleanup();
-
-	return 0;
+    Window win;
+    win.init();
+    win.update();
+    win.cleanup();
+    return 0;
 }

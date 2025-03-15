@@ -1,50 +1,53 @@
-#include<iostream>
 #include "window.h"
-#include"shader_config.h"
+#include "shader_config.h"
+#include <iostream>
 
 void Window::init() {
-	
-	vertexPath = "shaders/vertex_shader.glsl";
-	fragmentPath = "shaders/fragment_shader.glsl";
-	if (!glfwInit()) {
-		cerr << "Error: glfw not initialised!" << endl;
-	}
-	shaders shaderObj;
-	shaderProgram = shaderObj.createShaderProgram(vertexPath.c_str(), fragmentPath.c_str());
+    vertexPath = "shaders/vertex_shader.glsl";
+    fragmentPath = "shaders/fragment_shader.glsl";
 
+   
+    if (!glfwInit()) {
+        std::cerr << "Error: GLFW not initialized!" << std::endl;
+        return;
+    }
 
-	window = glfwCreateWindow(800, 800, "Engine", nullptr, nullptr);
-	if (!window) {
-		cerr << "Window not initialises" << endl;
-		glfwTerminate();
-	}
-	glfwMakeContextCurrent(window);
-	if (glewInit() != GLEW_OK) {
-		cerr << "Error: GLEW initialization failed!" << endl;
-		glfwDestroyWindow(window);
-		glfwTerminate();
-		return;
-	}
+    
+    window = glfwCreateWindow(800, 800, "Engine", nullptr, nullptr);
+    if (!window) {
+        std::cerr << "Error: Window not created!" << std::endl;
+        glfwTerminate();
+        return;
+    }
 
+    glfwMakeContextCurrent(window);
+
+   
+    if (glewInit() != GLEW_OK) {
+        std::cerr << "Error: GLEW initialization failed!" << std::endl;
+        glfwDestroyWindow(window);
+        glfwTerminate();
+        return;
+    }
+
+    
+    shaders shaderObj;
+    shaderProgram = shaderObj.createShaderProgram(vertexPath.c_str(), fragmentPath.c_str());
 }
 
 void Window::update() {
-	while (!glfwWindowShouldClose(window)) {
-		
+    while (!glfwWindowShouldClose(window)) {
+        glClear(GL_COLOR_BUFFER_BIT);
 
-		glClear(GL_COLOR_BUFFER_BIT);
+        glUseProgram(shaderProgram); 
 
-		glUseProgram(shaderProgram);
-
-		glfwSwapBuffers(window);
-
-		glfwPollEvents();
-	}
-
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
 }
 
 void Window::cleanup() {
-	glDeleteProgram(shaderProgram);
-	glfwDestroyWindow(window);
-	glfwTerminate();
+    glDeleteProgram(shaderProgram);
+    glfwDestroyWindow(window);
+    glfwTerminate();
 }

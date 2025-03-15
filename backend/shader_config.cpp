@@ -1,9 +1,6 @@
 #include "shader_config.h"
 
-using std::ifstream;
-using std::stringstream;
-
-string shaders::readShaderSource(const std::string& filepath) {
+std::string shaders::readShaderSource(const std::string& filepath) {
     std::ifstream shaderFile(filepath);
     std::stringstream shaderStream;
     if (shaderFile.is_open()) {
@@ -15,7 +12,7 @@ string shaders::readShaderSource(const std::string& filepath) {
     return shaderStream.str();
 }
 
-GLuint shaders::compileShader(GLenum shaderType, const string& shaderCode) {
+GLuint shaders::compileShader(GLenum shaderType, const std::string& shaderCode) {
     GLuint shader = glCreateShader(shaderType);
     const char* code = shaderCode.c_str();
     glShaderSource(shader, 1, &code, nullptr);
@@ -32,14 +29,13 @@ GLuint shaders::compileShader(GLenum shaderType, const string& shaderCode) {
 }
 
 GLuint shaders::createShaderProgram(const char* vertexPath, const char* fragmentPath) {
-    string vertexSource = readShaderSource(vertexPath);
-    string fragmentSource = readShaderSource(fragmentPath);
+    std::string vertexSource = readShaderSource(vertexPath);
+    std::string fragmentSource = readShaderSource(fragmentPath);
 
     GLuint vertexShader = compileShader(GL_VERTEX_SHADER, vertexSource);
     GLuint fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragmentSource);
 
     GLuint shaderProgram = glCreateProgram();
-
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
 
@@ -53,8 +49,8 @@ GLuint shaders::createShaderProgram(const char* vertexPath, const char* fragment
         std::cerr << "ERROR::SHADER_PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
     }
 
-    glDeleteShader(vertexShader);  // Correctly delete the vertex shader
-    glDeleteShader(fragmentShader);  // Correctly delete the fragment shader
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
 
     return shaderProgram;
 }
