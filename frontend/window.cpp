@@ -1,10 +1,10 @@
 #include "window.h"
-#include "shader_config.h"
+#include "../backend/shader_config.h"
 #include <iostream>
 
 void Window::init() {
-    vertexPath = "shaders/vertex_shader.glsl";
-    fragmentPath = "shaders/fragment_shader.glsl";
+    vertexPath = "../shaders/vertex_shader.glsl";
+    fragmentPath = "../shaders/fragment_shader.glsl";
 
    
     if (!glfwInit()) {

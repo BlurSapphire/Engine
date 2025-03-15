@@ -18,18 +18,24 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="backend\window.cpp">
+    <ClCompile Include="frontend\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="backend\shader_config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="backend\mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="backend\window.h">
+    <ClInclude Include="frontend\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="backend\shader_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

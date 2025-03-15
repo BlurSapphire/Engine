@@ -1,4 +1,4 @@
-#include "shader_config.h"
+#include "../backend/shader_config.h"
 
 std::string shaders::readShaderSource(const std::string& filepath) {
     std::ifstream shaderFile(filepath);
