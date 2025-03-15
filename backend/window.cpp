@@ -6,12 +6,14 @@ void Window::init() {
 	if (!glfwInit()) {
 		cerr << "Error: glfw not initialised!" << endl;
 	}
-
+	
 	window = glfwCreateWindow(800, 800, "Engine", nullptr, nullptr);
 	if (!window) {
 		cerr << "Window not initialises" << endl;
 		glfwTerminate();
 	}
+	glfwMakeContextCurrent(window);
+	glewInit();
 }
 
 void Window::update() {
