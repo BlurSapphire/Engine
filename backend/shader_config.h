@@ -1,16 +1,16 @@
 #pragma once
 
-#include<iostream>
-#include<GL/glew.h>
-#include<GLFW/glfw3.h>
-#include<sstream>
-#include<string>
+#include <GL/glew.h>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 using std::string;
-
 class shaders {
-	string readShaderFile(const string& filpath);
-	GLuint compileShader(GLenum shaderType, const string& shaderCode);
-
+public:
+    static GLuint createShaderProgram(const char* vertexPath, const char* fragmentPath);
+    static string readShaderSource(const std::string& filepath);
+private:
+    static GLuint compileShader(GLenum shaderType, const string& shaderCode);
 };
-

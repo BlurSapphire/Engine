@@ -5,4 +5,7 @@ int main() {
 	Window win;
 	win.init();
 	win.update();
+	win.cleanup();
+
+	return 0;
 }

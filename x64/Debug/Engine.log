@@ -1,2 +1,6 @@
-﻿  main.cpp
-  Engine.vcxproj -> C:\Users\relam\source\repos\Engine\x64\Debug\Engine.exe
+﻿  shader_config.cpp
+  window.cpp
+  main.cpp
+  Generating Code...
+C:\Users\relam\source\repos\Engine\Engine\backend\shader_config.cpp(24,1): error C4716: 'shaders::createShaderProgram': must return a value
+C:\Users\relam\source\repos\Engine\Engine\backend\shader_config.cpp(19,1): error C4716: 'shaders::compileShader': must return a value
