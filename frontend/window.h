@@ -3,6 +3,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <string>
+#include<vector>
+#include<glm/glm.hpp>
+#include"../backend/mesh.h"
 
 class Window {
 public:
