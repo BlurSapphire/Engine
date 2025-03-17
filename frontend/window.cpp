@@ -1,34 +1,35 @@
 #include "window.h"
-#include "../backend/shader_config.h"
 #include <iostream>
 
 
 
 void Window::init() {
 
-    std::vector<glm::vec3> vertices = {
-        // Position
-        glm::vec3(-0.5f, -0.5f, -0.5f),
-        glm::vec3(0.5f, -0.5f, -0.5f),
-        glm::vec3(0.5f,  0.5f, -0.5f),
-        glm::vec3(-0.5f,  0.5f, -0.5f),
-        glm::vec3(-0.5f, -0.5f,  0.5f),
-        glm::vec3(0.5f, -0.5f,  0.5f),
-        glm::vec3(0.5f,  0.5f,  0.5f),
-        glm::vec3(-0.5f,  0.5f,  0.5f)
+    vector<glm::vec3> vertices = {
+        
+       vec3(-0.5f, -0.5f, -0.5f),
+       vec3(0.5f, -0.5f, -0.5f),
+       vec3(0.5f,  0.5f, -0.5f),
+       vec3(-0.5f,  0.5f, -0.5f),
+       vec3(-0.5f, -0.5f,  0.5f),
+       vec3(0.5f, -0.5f,  0.5f),
+       vec3(0.5f,  0.5f,  0.5f),
+       vec3(-0.5f,  0.5f,  0.5f)
     };
 
-    std::vector<GLuint> indices = {
-        0, 1, 2, 2, 3, 0, // Bottom face
-        4, 5, 6, 6, 7, 4, // Top face
-        0, 1, 5, 5, 4, 0, // Front face
-        2, 3, 7, 7, 6, 2, // Back face
-        0, 3, 7, 7, 4, 0, // Left face
-        1, 2, 6, 6, 5, 1  // Right face
+   vector<GLuint> indices = {
+        0, 1, 2, 2, 3, 0, 
+        4, 5, 6, 6, 7, 4, 
+        0, 1, 5, 5, 4, 0, 
+        2, 3, 7, 7, 6, 2,
+        0, 3, 7, 7, 4, 0, 
+        1, 2, 6, 6, 5, 1 
     };
-    Mesh cube(vertices, indices);
-    vertexPath = "../shaders/vertex_shader.glsl";
-    fragmentPath = "../shaders/fragment_shader.glsl";
+
+   
+    cube = Mesh(vertices, indices);
+    vertexPath = "../Engine/shaders/vertex_shader.glsl";
+    fragmentPath = "../Engine/shaders/fragment_shader.glsl";
 
    
     if (!glfwInit()) {
@@ -62,13 +63,12 @@ void Window::init() {
 
 void Window::update() {
     while (!glfwWindowShouldClose(window)) {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_DEPTH_TEST);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = glm::lookAt(glm::vec3(3.0f, 3.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
         GLuint modelLoc = glGetUniformLocation(shaderProgram, "model");
         GLuint viewLoc = glGetUniformLocation(shaderProgram, "view");
@@ -79,11 +79,10 @@ void Window::update() {
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
         glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-        
         cube.Draw(shaderProgram);
 
-        glfwSwapBuffers(window);
         glfwPollEvents();
+        glfwSwapBuffers(window);
     }
 }
 
